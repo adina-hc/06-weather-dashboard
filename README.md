@@ -40,7 +40,7 @@ _______________________________________________
 
 ## Sample Image
 
-![Mock-up Image](./assets/Weather-mockImage.png)
+![Mock-up Image](./Assets/Weather-mockImage.png)
 
 
 _______________________________________________

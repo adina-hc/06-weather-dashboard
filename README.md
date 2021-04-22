@@ -36,11 +36,14 @@ Forecast information:
 
 
 
-__________
+_______________________________________________
 
 ## Sample Image
 
 ![Mock-up Image](./assets/Weather-mockImage.png)
+
+_______________________________________________
+
 
 ## Link to website
 [Link to Website](https://adina-hc.github.io/06-weather-dashboard/)

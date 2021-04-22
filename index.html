@@ -17,41 +17,42 @@
         <h1>Weather Dashboard</h1>
     </header>
     <section class="search container">
-        <div class="input-group rounded">
+        <div class="input-group rounded mb-3">
             <input id="userSearch" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                 aria-describedby="search-addon"/>
-            <button id="fetchBtn" type="submit" class="btn btn-primary boton">Search
+            <button id="fetchBtn" type="submit" class="btn btn-primary btn-sm boton">Search
                 <i class="fas fa-search"></i>
             </button>
 
         </div>
-        <section id="history" class=historySec>Search History
-        </section>
+        <div id="history" class="historySec">Search History
+            <div id="populateHistory">
+            </div>
+        </div>
 
     </section>
-    <section class="container">
+    <section class="container currentWeather">
         <div class="card-group">
             <div class="card">
                 <img  class="card-img-top" alt="">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                        content. This content is a little bit longer.</p>
+                    <h5 class="card-title">City</h5>
+                    <p class="card-text">Current weather information.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
             <div class="card">
                 <img id="wthIcon" src="" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <h5 class="card-title">Forecast</h5>
+                    <p class="card-text">Five day weather forecast.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
             
         </div>
     </section>
-
-    <script src="develop/js/test.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="develop/js/script.js"></script>
 </body>
 </html>

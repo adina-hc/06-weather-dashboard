@@ -3,27 +3,36 @@
           box-sizing: border-box;
 }
 
+html {
+  background: url("../css/free-diego-AM53LSIBnRo-unsplash.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -ms-flex-line-pack: center;
       align-content: center;
 }
 
-h1 {
-  text-align: center;
+body {
+  opacity: 0.8;
 }
 
-.search {
-  -webkit-box-orient: vertical;
+h1 {
+  text-align: center;
+  margin: 1.5rem;
+  padding: 1.5rem;
+}
+
+.currentWeather {
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 div.card {
@@ -42,23 +51,23 @@ div.card {
   border: none;
 }
 
+/*
 .historySec {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0.5em;
-  margin: 0.5em;
-}
-
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    margin: 0.5em;
+}   
+*/
 .historyBtn {
-  display: block;
-  border-radius: 7%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
   width: 12em;
-  height: 1.8em;
-  font-size: 15px;
+  height: 2.5em;
+  font-size: 0.8em;
+  margin: 0.5em;
 }
 /*# sourceMappingURL=style.css.map */

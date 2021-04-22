@@ -23,23 +23,33 @@
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
+html {
+    background:url('../css/free-diego-AM53LSIBnRo-unsplash.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+}
 
 main {
-    display: flex;
-    flex-direction: row;
+    
+    //flex-direction: row;
     align-content: center;
+}
+
+body {
+    opacity: 0.8;
 }
 
 h1 {
     text-align: center;
+    margin: 1.5rem;
+    padding: 1.5rem;
 }
 
-.search {
-    flex: content;
-}
-.boton {
-    max-width: fit-content;
-    max-height: fit-content;
+
+.currentWeather{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 div.card{
@@ -62,10 +72,11 @@ div.card{
 }   
 */
 .historyBtn {
-    display: block;
-    border-radius: 7%;
+    display: inline-flex;
+    align-content: center;
     width: 12em;
-    height: 1.8em;
-    font-size: 15px;
+    height: 2.5em;
+    font-size: 0.8em;
+    margin: 0.5em;
     
 }

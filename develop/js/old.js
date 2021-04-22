@@ -8,7 +8,7 @@ var wImage = document.querySelector(".card-img-top");
 
 
 // 1. Fetch data based on user selection
-var appKey = '766dfa77a15860a4f2cd465763e36bb6';
+var appKey = 'e81626d7be11e6979c57af627d900393';
 var displayWeather = function (e) {
     e.preventDefault();
     // use userInput to fecth data in openweathermap.org
@@ -29,19 +29,34 @@ function fetchWeather(userInput) {
         if(response.ok){
             response.json().then(function(data) {
                 console.log(data);
-
+                // Populate card with fetched data
+                document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
+                document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+"<br> Wind speed: "+data.wind.speed;
+                // Add icon to the img section
+                var wPic = data.weather[0].icon;
+                var wImageSrc = 'http://openweathermap.org/img/wn/'+wPic+'@2x.png';
+                wImage.src = wImageSrc;
+                console.log(wImage.src);
+                saveToLocal (userInput);
+                // Prevent duplication of buttons
+                while (historySec.firstChild) {
+                    historySec.removeChild(historySec.firstChild);
+                }
+                // Print search history
+                printHistory(historySec);
             // Fetch the UV data    
                 fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${appKey}`)
                 .then(res => res.json())
                 .then(uvData => {
                     console.log(uvData)
+                    /* to add if
                     if(uvData.current.uvi < 3){
                         // color green
-                    }
-                    populateCard(data,uvData);
-                })   
+                    };
+                    */
+                });   
                 // Function pullData --> to gather the current data by humidity, wind, etc
-
+                
             }); 
             
         }
@@ -64,35 +79,6 @@ function fetchWeather(userInput) {
         })
 
 }
-
-// Populate card with fetched data
-function populateCard(data,uvData){
-    // Add icon to the image section
-    var wPic = data.weather[0].icon;
-    var wImageSrc = 'http://openweathermap.org/img/wn/'+wPic+'@2x.png';
-    wImage.src = wImageSrc;
-    console.log(wImage.src);
-    // Add current conditions
-    var currentData = {
-        city: data.name, temp: data.main.temp+" °F", humidity: data.main.humidity, windSpeed: data.wind.speed}
-    document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
-    document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+"<br> Wind speed: "+data.wind.speed+"<br> Date: "+data.dt+"<br>UVI Index: "+uvData.current.uvi;
-    
-    
-    saveToLocal (userInput);
-    // Prevent duplication of buttons
-    while (historySec.firstChild) {
-        historySec.removeChild(historySec.firstChild);
-}
-// Print search history
-printHistory(historySec);
-}
-
-
-
-
-
-
 
 
 // 3. Store City Search History in the stored History Buttons
@@ -117,11 +103,12 @@ function printHistory(historySec){
         for (var i = 0; i < wHistory.length; i++){
             //creates and adds button for the element in history
             var historyEl = document.createElement("button");
-            historyEl.setAttribute("class", "historyBtn")
+            historyEl.setAttribute("class", "historyBtn");
             historySec.appendChild(historyEl);
-            historyEl.textContent = wHistory[i];          
+            historyEl.textContent = wHistory[i];
+            var hBtn = wHistory[i];          
         }
-    
+        console.log(hBtn); //remove later, this to see if I can use for fech history
     }
    
    }

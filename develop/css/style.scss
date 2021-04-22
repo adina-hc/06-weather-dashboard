@@ -1,0 +1,71 @@
+// Variables
+
+*{
+    
+    box-sizing: border-box;
+    $font-family-sans-serif:
+  // Safari for macOS and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for macOS (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  Roboto,
+  // Basic web fallback
+  "Helvetica Neue", Arial,
+  // Linux
+  "Noto Sans",
+  "Liberation Sans",
+  // Sans serif fallback
+  sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.search {
+    flex: content;
+}
+.boton {
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+div.card{
+    background-color:lightblue;
+}
+.card {
+    align-items: center;
+}
+.card-img-top {
+    height: 5em;
+    width: 5em;
+    border: none;
+}
+/*
+.historySec {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    margin: 0.5em;
+}   
+*/
+.historyBtn {
+    display: block;
+    border-radius: 7%;
+    width: 12em;
+    height: 1.8em;
+    font-size: 15px;
+    
+}

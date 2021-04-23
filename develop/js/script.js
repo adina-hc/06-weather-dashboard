@@ -109,16 +109,8 @@ function populateFive(filteredDays, fiveDayFSec){
         newP.setAttribute("class","card-text");
         newDiv.appendChild(newP);
         // Print data
-        document.querySelector(".cardForecast").textContent = "Date: "+filteredDays[i].dt_txt+"<br>Temperature: "+filteredDays[i].main.temp+" °F"+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";    
-        
-        /*
-        // Display weather forecast
-        function displayWeatherForecast() {
-            iconElement.innerHTML = wIcon.source;
-            cityElement.innerHTML = userInputEl.value;
-            tempElement.innerHTML = filteredDays[i].main.temp + " °F";
-        }
-        */
+        document.querySelector(".cardForecast").innerHTML = "Date: "+filteredDays[i].dt_txt+"<br>Temperature: "+filteredDays[i].main.temp+" °F"+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";    
+
     }
 }  
     

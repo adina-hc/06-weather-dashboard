@@ -63,6 +63,12 @@ div.card{
     width: 5em;
     border: none;
 }
+
+.cardForecast {
+    flex-wrap: wrap;
+    width: max-content;
+}
+
 /*
 .historySec {
     display: flex;

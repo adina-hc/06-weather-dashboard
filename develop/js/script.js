@@ -1,6 +1,7 @@
 // 0. Variables & elements retrieval
 var userInputEl = document.getElementById('userSearch');
 var currentSec = document.getElementById('currentSection');
+var fiveDayFSec = document.querySelector('.fiveDayForecast');
 var historySec = document.getElementById('history');
 var searchBtn = document.getElementById('fetchBtn');
 var formLabel = document.getElementById('#form-label');
@@ -16,8 +17,10 @@ var displayWeather = function (e) {
     // use userInput to fecth data in openweathermap.org
     userInput = userInputEl.value;
     userInput = userInput.toUpperCase();
-    // Unhide Current Weather section
+    // Unhide Current and Forecast Weather sections
     currentSec.setAttribute("style","display:block;");
+    fiveDayFSec.setAttribute("style","display:block;");
+
     fetchWeather(userInput);    
 }
 
@@ -71,8 +74,7 @@ function fetchWeather(userInput) {
 }
 
 
-
-// Populate card with fetched data
+// 3. Populate card with fetched data
 function populateCard(data,uvData){
     // Add icon to the image section
     var wPic = data.weather[0].icon;
@@ -83,18 +85,54 @@ function populateCard(data,uvData){
     var unixDate = moment.unix(data.dt).format("MMM Do, YYYY");
     // Add current conditions
     document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
-    document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+" %"+"<br> Wind speed: "+data.wind.speed+" mph"+"<br> Date: "+unixDate+"<br>UVI Index: "+uvData.current.uvi;
+    document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+" %"+"<br>Wind speed: "+data.wind.speed+" mph"+"<br>Date: "+unixDate+"<br>UVI Index: "+uvData.current.uvi;
+    var userInput = userInputEl.value;
     var result = saveToLocal (userInput);
     // Print search history
     if(!result){
         printHistory(historySec);
+
     }
+    // Unhide Current and Forecast Weather sections
+    currentSec.setAttribute("style","display:block;");
+    fiveDayFSec.setAttribute("style","display:block;");
 }
 
-// Populate five-day forecast cards
+// 4. Function to populate 5-day Forecast cards with loop
 function populateFive(forecastData) {
     console.log("Data from forecastData fetch to populate 5-day Forecast:")
-    console.log(forecastData);
+    console.log(forecastData.list);
+    for (var cards = 0; cards < 5; cards ++) {
+        // Add new card in Five Day Forecast Sectioon
+        var newCard = document.createElement('div');
+        newCard.setAttribute("class","card tarjeta");
+        fiveDayFSec.appendChild(newCard);
+        // New Image in card   
+        var newImg = document.createElement('img');
+        newImg.setAttribute("id", "wthIcon");
+        newCard.appendChild(newImg);
+        newImg.setAttribute("class","card-img-top")
+        var wIcon = document.querySelector('#wthIcon');
+        var fPic = forecastData.list[cards].weather[0].icon;
+        var fImageSrc = 'http://openweathermap.org/img/wn/'+fPic+'@2x.png';
+        wIcon.src = fImageSrc;
+        console.log(wIcon.src);
+        // New div to attach Weather info
+        var newDiv = document.createElement("div");
+        newDiv.setAttribute("class", "card cardForecast");
+        newCard.appendChild(newDiv);
+        // New h5 in new div
+        var newh5 = document.createElement("h5");
+        newh5.setAttribute("class", "card-title");
+        newDiv.appendChild(newh5);
+        var newP = document.createElement("p");
+        newP.setAttribute("class","card-text");
+        newDiv.appendChild(newP);
+        // Print data
+        document.querySelector(".cardForecast").innerHTML = "Date: "+forecastData.list[cards].dt_txt+"<br>Temperature: "+forecastData.list[cards].main.temp+" °F"+"<br>Humidity: "+forecastData.list[cards].main.humidity+" %"+"<br>Wind: "+forecastData.list[cards].wind.speed+" mph";
+        
+        }
+
 
         // create elements with attribute & class names, and append elements
     }
@@ -147,13 +185,13 @@ var displayCityHistory = function (e) {
         return null;
     }
     else {
-        console.log(1);
+        userInputEl.value = e.target.dataset.value;
         fetchWeather(e.target.dataset.value);
         
     }     
 }
 
-// 6. Function to print 5-day Forecast cards with loop
+
 
 
 

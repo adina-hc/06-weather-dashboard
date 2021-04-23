@@ -51,6 +51,20 @@ div.card {
   border: none;
 }
 
+.tarjeta {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.cardForecast {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
 /*
 .historySec {
     display: flex;

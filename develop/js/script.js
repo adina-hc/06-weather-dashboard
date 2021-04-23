@@ -1,5 +1,6 @@
 // 0. Variables & elements retrieval
 var userInputEl = document.getElementById('userSearch');
+var currentSec = document.getElementById('currentSection');
 var historySec = document.getElementById('history');
 var searchBtn = document.getElementById('fetchBtn');
 var formLabel = document.getElementById('#form-label');
@@ -15,6 +16,8 @@ var displayWeather = function (e) {
     // use userInput to fecth data in openweathermap.org
     userInput = userInputEl.value;
     userInput = userInput.toUpperCase();
+    // Unhide Current Weather section
+    currentSec.setAttribute("style","display:block;");
     fetchWeather(userInput);    
 }
 
@@ -60,8 +63,9 @@ function fetchWeather(userInput) {
             var filteredDays = forecastData.list.filter(query => query.dt_txt.includes('12:00:00'))
             console.log(filteredDays)
 // call function for printing the 5 cards
+            console.log("forecastData to use in 5-Day function");
             populateFive(forecastData);
-            console.log("What variables created for 5 day forecast");
+
         })
 
 }
@@ -80,12 +84,7 @@ function populateCard(data,uvData){
     // Add current conditions
     document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
     document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+" %"+"<br> Wind speed: "+data.wind.speed+" mph"+"<br> Date: "+unixDate+"<br>UVI Index: "+uvData.current.uvi;
-    // 5-Day weather forecast
-    
-
-
     var result = saveToLocal (userInput);
-    // ** add forecast here
     // Print search history
     if(!result){
         printHistory(historySec);
@@ -94,28 +93,13 @@ function populateCard(data,uvData){
 
 // Populate five-day forecast cards
 function populateFive(forecastData) {
-
-    // Loop to populate cards
-    console.log("Loop for Forecast");
-    for (var cards = 0; cards < forecastData.length; cards++) {
-        // place into variables forecastData[cards].dt_txt        
-        var fCdate = forecastData[cards].daily[0].dt;
-        // convert unix date into date format
-        var unixDateF = moment.unix(fCdate).format("MMM Do, YYYY");
-        console.log(fCdate); // remove after test
-        var fCtemp = uvData[cards].temp;
-        console.log(fCtemp);
-        var fCicon = uvData[cards].icon;
-        //var wPic = data.weather[0].icon;
-        var wImageSrcF = 'http://openweathermap.org/img/wn/'+fCicon+'@2x.png';
-        console.log(fCicon);
-        var fCwindSpd = uvData[cards].speed;
-        console.log(fCwindSp);
+    console.log("Data from forecastData fetch to populate 5-day Forecast:")
+    console.log(forecastData);
 
         // create elements with attribute & class names, and append elements
     }
 
-}
+
 
 
 // 3. Store City Search History in the stored History Buttons

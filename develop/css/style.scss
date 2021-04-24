@@ -1,98 +1,92 @@
 // Variables
 
-*{
-    
-    box-sizing: border-box;
-    $font-family-sans-serif:
+* {
+  box-sizing: border-box;
+  $font-family-sans-serif:
   // Safari for macOS and iOS (San Francisco)
-  -apple-system,
-  // Chrome < 56 for macOS (San Francisco)
-  BlinkMacSystemFont,
-  // Windows
-  "Segoe UI",
-  // Android
-  Roboto,
-  // Basic web fallback
-  "Helvetica Neue", Arial,
-  // Linux
-  "Noto Sans",
-  "Liberation Sans",
-  // Sans serif fallback
-  sans-serif,
-  // Emoji fonts
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
+    -apple-system,
+    // Chrome < 56 for macOS (San Francisco)
+    BlinkMacSystemFont,
+    // Windows
+    "Segoe UI",
+    // Android
+    Roboto,
+    // Basic web fallback
+    "Helvetica Neue",
+    Arial,
+    // Linux
+    "Noto Sans",
+    "Liberation Sans",
+    // Sans serif fallback
+    sans-serif,
+    // Emoji fonts
+    "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 html {
-    background:url('../css/free-diego-AM53LSIBnRo-unsplash.jpg') no-repeat center center fixed;
-    background-size: cover;
-
+  background: url("../css/free-diego-AM53LSIBnRo-unsplash.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
 }
 
 main {
-    
-    //flex-direction: row;
-    align-content: center;
+  //flex-direction: row;
+  align-content: center;
 }
 
 body {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 h1 {
-    text-align: center;
-    margin: 1.5rem;
-    padding: 1.5rem;
+  text-align: center;
+  margin: 1.5rem;
+  padding: 1.5rem;
 }
 
-/*
-.currentWeather{
-    flex-direction: row;
-    //flex-wrap: nowrap;
-    justify-content: center;
-}
-*/
-div.card{
-    background-color:lightblue;
+div.card {
+  background-color: lightblue;
 }
 .card {
-    align-items: center;
+  align-items: center;
 }
 .card-img-top {
-    height: 5em;
-    width: 5em;
-    border: none;
+  height: 5em;
+  width: 5em;
+  border: none;
 }
-
 
 .historyBtn {
-    display: inline-flex;
-    align-content: center;
-    width: 12em;
-    height: 2.5em;
-    font-size: 0.8em;
-    margin: 0.5em;
-    
+  display: inline-flex;
+  align-content: center;
+  width: 12em;
+  height: 2.5em;
+  font-size: 0.8em;
+  margin: 0.5em;
 }
 
+.fiveDayForecast {
+    flex-wrap: nowrap;
+}
 
 .tarjeta {
-    min-width: 150px;
+  min-width: 15em;
+  padding: 5px;
+  margin: 0.5em;
 }
-
 
 
 footer {
-    align-content: right;
-    h6 {
-        color: cadetblue;
-        font-weight: light;
-        font-style: oblique;
-        text-align: right;
-        margin: 1em;
-    }
+  align-content: right;
+  h6 {
+    color: cadetblue;
+    font-weight: light;
+    font-style: oblique;
+    text-align: right;
+    margin: 1em;
+  }
 }
 
 card-text {
-    font-size: 10px;
+  font-size: 10px;
 }

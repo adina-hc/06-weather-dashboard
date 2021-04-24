@@ -23,13 +23,6 @@ h1 {
   padding: 1.5rem;
 }
 
-/*
-.currentWeather{
-    flex-direction: row;
-    //flex-wrap: nowrap;
-    justify-content: center;
-}
-*/
 div.card {
   background-color: lightblue;
 }
@@ -58,8 +51,15 @@ div.card {
   margin: 0.5em;
 }
 
+.fiveDayForecast {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
 .tarjeta {
-  min-width: 150px;
+  min-width: 15em;
+  padding: 5px;
+  margin: 0.5em;
 }
 
 footer {

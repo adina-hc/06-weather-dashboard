@@ -11,6 +11,7 @@ var populateHistoryUl = document.querySelector('#populateHistory');
 var forecastFilteredData;
 var weatherForecast = {};
 var appKey = '766dfa77a15860a4f2cd465763e36bb6';
+var secondDiv = document.querySelector('.second-div')
 
 // 1. Search data based on user selection
 var displayWeather = function (e) {
@@ -82,15 +83,15 @@ function populateFive(filteredDays, fiveDayFSec){
     console.log(filteredDays); //remove when done
     // Add new card group in Five Day Forecast Section
     var newCardGroup = document.createElement('div');
-    newCardGroup.setAttribute("class", "card-group");
-    fiveDayFSec.appendChild(newCardGroup);
+    newCardGroup.setAttribute("class", "card-group col-sm-6");
+    secondDiv.appendChild(newCardGroup);
     for (var i = 0; i < filteredDays.length; i ++) {
         console.log(filteredDays[i].dt_txt);
         console.log("Line 158 ---> From Function populateFive ---> Data from filtered from local storage to populate 5-day Forecast:") // delete after test
 
         // Add new card in card group
         var newCard = document.createElement('div');
-        newCard.setAttribute("class","card tarjeta");
+        newCard.setAttribute("class","card w-50 tarjeta");
         newCardGroup.appendChild(newCard);
         // New Image in  new card   
         var newImg = document.createElement('img');
@@ -117,15 +118,12 @@ function populateFive(filteredDays, fiveDayFSec){
         
         // Print data
 
-        newh5.innerHTML += "Forecast<br>"; 
         newh5.innerHTML += "Temperature: "+filteredDays[i].main.temp+" °F";
         newP.innerHTML += "Date: "+filteredDays[i].dt_txt+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";
     }
 
 }  
     
-
-
 // 3. Populate card with fetched data
 function populateCard(data,uvData) {
     // Add icon to the image section

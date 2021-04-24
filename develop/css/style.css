@@ -23,18 +23,13 @@ h1 {
   padding: 1.5rem;
 }
 
-.currentWeather {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+/*
+.currentWeather{
+    flex-direction: row;
+    //flex-wrap: nowrap;
+    justify-content: center;
 }
-
+*/
 div.card {
   background-color: lightblue;
 }
@@ -51,28 +46,6 @@ div.card {
   border: none;
 }
 
-.tarjeta {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.cardForecast {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-}
-
-/*
-.historySec {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
-    margin: 0.5em;
-}   
-*/
 .historyBtn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -83,5 +56,26 @@ div.card {
   height: 2.5em;
   font-size: 0.8em;
   margin: 0.5em;
+}
+
+.tarjeta {
+  min-width: 300px;
+}
+
+footer {
+  -ms-flex-line-pack: right;
+      align-content: right;
+}
+
+footer h6 {
+  color: cadetblue;
+  font-weight: light;
+  font-style: oblique;
+  text-align: right;
+  margin: 1em;
+}
+
+card-text {
+  font-size: 10px;
 }
 /*# sourceMappingURL=style.css.map */

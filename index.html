@@ -24,7 +24,7 @@
         
             <input id="userSearch" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                 aria-describedby="search-addon"/>
-            <button id="fetchBtn" type="submit" class="btn btn-primary btn-sm boton">Search
+            <button id="fetchBtn" type="submit" class="btn btn-primary btn-large boton">Search
                 <i class="fas fa-search"></i>
             </button>
         </div>
@@ -35,7 +35,7 @@
         </div>
     </section>
 <!-- Current Weather -->
-    <section id="currentSection" class="container-fluid currentWeather" style="display: block;"> 
+    <section id="currentSection" class="container-fluid currentWeather" style="display: none;"> 
         <div class="card-group">
             <div class="card">
                 <h3>Current Weather</h3>
@@ -52,15 +52,19 @@
 <br>
     <!--  5 day Forecast Section -->
 
-    <section class="fiveDayForecast" style="display: inline-block;">
+    <section class="row-cols-3 fiveDayForecast container-md" style="display: inline-block;">
 
 
     </section>
 </main>
-    
+    <footer>
+        <h6>
+        &reg AH 2021
+        </h6>
+    </footer>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="develop/js/script.js"></script>
+    <script src="./develop/js/script.js"></script>
    
 </body>
 </html>

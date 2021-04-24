@@ -45,13 +45,13 @@ h1 {
     padding: 1.5rem;
 }
 
-
+/*
 .currentWeather{
     flex-direction: row;
-    flex-wrap: nowrap;
+    //flex-wrap: nowrap;
     justify-content: center;
 }
-
+*/
 div.card{
     background-color:lightblue;
 }
@@ -64,22 +64,7 @@ div.card{
     border: none;
 }
 
-.tarjeta {
-    width: fit-content;
-}
-.cardForecast {
-    flex-wrap: wrap;
-    width: max-content;
-}
 
-/*
-.historySec {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
-    margin: 0.5em;
-}   
-*/
 .historyBtn {
     display: inline-flex;
     align-content: center;
@@ -88,4 +73,26 @@ div.card{
     font-size: 0.8em;
     margin: 0.5em;
     
+}
+
+
+.tarjeta {
+    min-width: 300px;
+}
+
+
+
+footer {
+    align-content: right;
+    h6 {
+        color: cadetblue;
+        font-weight: light;
+        font-style: oblique;
+        text-align: right;
+        margin: 1em;
+    }
+}
+
+card-text {
+    font-size: 10px;
 }

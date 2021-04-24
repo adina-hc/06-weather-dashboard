@@ -70,7 +70,7 @@ function fetchWeather(userInput) {
                 console.log("Line-64--> 5 day forecast");
                 console.log(forecastData)
                 var filteredDays = forecastData.list.filter(query => query.dt_txt.includes('12:00:00'));
-
+                
                 // Call to populate 5-day Forecast
                 populateFive(filteredDays, fiveDayFSec);               
             })      
@@ -80,38 +80,48 @@ function fetchWeather(userInput) {
 // 4. Function to populate 5-day Forecast cards with loop --forecastFilteredData
 function populateFive(filteredDays, fiveDayFSec){
     console.log(filteredDays); //remove when done
+    // Add new card group in Five Day Forecast Section
+    var newCardGroup = document.createElement('div');
+    newCardGroup.setAttribute("class", "card-group");
+    fiveDayFSec.appendChild(newCardGroup);
     for (var i = 0; i < filteredDays.length; i ++) {
         console.log(filteredDays[i].dt_txt);
         console.log("Line 158 ---> From Function populateFive ---> Data from filtered from local storage to populate 5-day Forecast:") // delete after test
-        // Add new card in Five Day Forecast Sectioon
+
+        // Add new card in card group
         var newCard = document.createElement('div');
         newCard.setAttribute("class","card tarjeta");
-        fiveDayFSec.appendChild(newCard);
-        // New Image in card   
+        newCardGroup.appendChild(newCard);
+        // New Image in  new card   
         var newImg = document.createElement('img');
         newImg.setAttribute("id", "wthIcon");
         newCard.appendChild(newImg);
         newImg.setAttribute("class","card-img-top")
-        var wIcon = document.querySelector('#wthIcon');
+
         var fPic = filteredDays[i].weather[0].icon;
         var fImageSrc = 'http://openweathermap.org/img/wn/'+fPic+'@2x.png';
-        wIcon.src = fImageSrc;
-        console.log(wIcon.src); //remove after done
-        // New div to attach Weather info
-        var newDiv = document.createElement("div");
-        newDiv.setAttribute("class", "card cardForecast");
-        newCard.appendChild(newDiv);
-        // New h5 in new div
+        newImg.setAttribute("src",fImageSrc);
+    
+        // New card body in new card
+        var newCardBody = document.createElement("div");
+        newCardBody.setAttribute("class", "card-body");
+        newCard.appendChild(newCardBody);
+        // New h5 (card title) in new card body
         var newh5 = document.createElement("h5");
         newh5.setAttribute("class", "card-title");
-        newDiv.appendChild(newh5);
+        newCardBody.appendChild(newh5);
+        // New text card in new card body
         var newP = document.createElement("p");
         newP.setAttribute("class","card-text");
-        newDiv.appendChild(newP);
+        newCardBody.appendChild(newP);
+        
         // Print data
-        document.querySelector(".cardForecast").innerHTML = "Date: "+filteredDays[i].dt_txt+"<br>Temperature: "+filteredDays[i].main.temp+" °F"+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";    
 
+        newh5.innerHTML += "Forecast<br>"; 
+        newh5.innerHTML += "Temperature: "+filteredDays[i].main.temp+" °F";
+        newP.innerHTML += "Date: "+filteredDays[i].dt_txt+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";
     }
+
 }  
     
 

@@ -48,6 +48,10 @@ h2 {
   text-align: center;
 }
 
+input {
+  padding: 20px;
+}
+
 div.card {
   background-color: lightblue;
 }
@@ -98,7 +102,7 @@ h6.uvColor {
   display: inline-flex;
   align-content: center;
   padding: 10px;
-  margin: 10px;
+  margin: 50px;
   width: 12em;
   height: 2.5em;
   font-size: 0.8em;

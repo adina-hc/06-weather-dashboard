@@ -10,8 +10,11 @@ var wImage = document.querySelector('.card-img-top');
 var populateHistoryUl = document.querySelector('#populateHistory');
 var forecastFilteredData;
 var weatherForecast = {};
-var appKey = '766dfa77a15860a4f2cd465763e36bb6';
+var appKey = 'e81626d7be11e6979c57af627d900393';
 var secondDiv = document.querySelector('.second-div')
+var uvColorBar = document.querySelector('.uvColorBar');
+var uvColor = document.querySelector('.uvColor');
+
 
 // 1. Search data based on user selection
 var displayWeather = function (e) {
@@ -35,17 +38,28 @@ function fetchWeather(userInput) {
     .then (function(response){
         if(response.ok){
             response.json().then(function(data) {
-                console.log("Line 75 --> Data from first fetch"); // remove when done
-                console.log(data); // remove when done
 
             // Fetch the UV data    
                 fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${appKey}`)
                 .then(res => res.json())
                 .then(uvData => {
-                    console.log("Line 81 --> List of uvData for Current"); // remove when done
-                    console.log(uvData) // remove when done
+
                     if(uvData.current.uvi < 3){
-                        // ----> set colors --- green, yellow, red
+                        // ---> Set color: green
+                        uvColor.textContent = "green";
+                        uvColor.setAttribute("class","green");
+                    
+                        if(uvData.current.uvi > 8){
+                            // ---> Set color: red
+                            uvColor.textContent = "red";
+                            uvColor.setAttribute("class","red");
+
+                        }
+                    } 
+                    else {
+                        // Set color: yellow
+                        uvColor.textContent = "yellow";
+                        uvColor.setAttribute("class","yellow");
                         
                     }
                     populateCard(data,uvData);
@@ -77,17 +91,37 @@ function fetchWeather(userInput) {
             })      
     }
 }
+    
+// 3. Populate card with fetched data
+function populateCard(data,uvData) {
+    // Add icon to the image section
+    var wPic = data.weather[0].icon;
+    var wImageSrc = 'http://openweathermap.org/img/wn/'+wPic+'@2x.png';
+    wImage.src = wImageSrc;
+    // To convert unix number into date format
+    var unixDate = moment.unix(data.dt).format("MMM Do, YYYY HH:mm");
+    // Add current conditions
+    document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
+    document.querySelector(".card-text").innerHTML = "Date: "+unixDate+"<br>Humidity: "+data.main.humidity+" %"+"<br>Wind speed: "+data.wind.speed+" mph"+"<br>UVI Index: "+uvData.current.uvi;
+    var userInput = userInputEl.value;
+    var result = saveToLocal (userInput);
+    // Print search history
+    if(!result){
+        printHistory(historySec);
+    }
+    // Unhide Current and Forecast Weather sections
+    currentSec.setAttribute("style","display:block;");
+    fiveDayFSec.setAttribute("style","display:block;");
+}
 
 // 4. Function to populate 5-day Forecast cards with loop --forecastFilteredData
 function populateFive(filteredDays, fiveDayFSec){
-    console.log(filteredDays); //remove when done
     // Add new card group in Five Day Forecast Section
     var newCardGroup = document.createElement('div');
     newCardGroup.setAttribute("class", "card-group col-sm-6");
     secondDiv.appendChild(newCardGroup);
     for (var i = 0; i < filteredDays.length; i ++) {
         console.log(filteredDays[i].dt_txt);
-        console.log("Line 158 ---> From Function populateFive ---> Data from filtered from local storage to populate 5-day Forecast:") // delete after test
 
         // Add new card in card group
         var newCard = document.createElement('div');
@@ -117,37 +151,12 @@ function populateFive(filteredDays, fiveDayFSec){
         newCardBody.appendChild(newP);
         
         // Print data
-
         newh5.innerHTML += "Temperature: "+filteredDays[i].main.temp+" °F";
         newP.innerHTML += "Date: "+filteredDays[i].dt_txt+"<br>Humidity: "+filteredDays[i].main.humidity+" %"+"<br>Wind: "+filteredDays[i].wind.speed+" mph";
     }
-
 }  
-    
-// 3. Populate card with fetched data
-function populateCard(data,uvData) {
-    // Add icon to the image section
-    var wPic = data.weather[0].icon;
-    var wImageSrc = 'http://openweathermap.org/img/wn/'+wPic+'@2x.png';
-    wImage.src = wImageSrc;
-    console.log(wImage.src);
-    // To convert unix number into date format
-    var unixDate = moment.unix(data.dt).format("MMM Do, YYYY");
-    // Add current conditions
-    document.querySelector(".card-title").innerHTML = data.name+": "+data.main.temp+" °F"
-    document.querySelector(".card-text").innerHTML = "Humidity: "+data.main.humidity+" %"+"<br>Wind speed: "+data.wind.speed+" mph"+"<br>Date: "+unixDate+"<br>UVI Index: "+uvData.current.uvi;
-    var userInput = userInputEl.value;
-    var result = saveToLocal (userInput);
-    // Print search history
-    if(!result){
-        printHistory(historySec);
-    }
-    // Unhide Current and Forecast Weather sections
-    currentSec.setAttribute("style","display:block;");
-    fiveDayFSec.setAttribute("style","display:block;");
-}
 
-// 3. Store City Search History in the stored History Buttons
+// 5. Store City Search History in the stored History Buttons
 function saveToLocal (userInput) {
     // creates array to save and inializes local storage array
     var keyFromSearch = JSON.parse(localStorage.getItem("weatherHistory"))||[];
@@ -167,7 +176,7 @@ function saveToLocal (userInput) {
     return isOnLocal;
 }
 
-// 4. Variable to print the search history
+// 6. Variable to print the search history
 function printHistory(){
     var wHistory = JSON.parse(localStorage.getItem("weatherHistory"))||[];
     populateHistoryUl.textContent='';
@@ -184,7 +193,7 @@ function printHistory(){
     }   
 }
 
-// 5. History buttons for fetch   
+// 7. History buttons for fetch   
 var displayCityHistory = function (e) {
     console.log(3);
     // if button has a value
@@ -197,9 +206,9 @@ var displayCityHistory = function (e) {
     }     
 }
 
-// On click search button, create button with city name
+// 8. On click search button, create button with city name
 searchBtn.addEventListener('click',displayWeather);
 populateHistoryUl.addEventListener('click', displayCityHistory);
 
-// Print Search History
+// 9. Call History
 printHistory(historySec);

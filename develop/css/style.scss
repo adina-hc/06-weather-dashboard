@@ -44,6 +44,10 @@ h1 {
   padding: 1.5rem;
 }
 
+h2 {
+  text-align: center;
+}
+
 div.card {
   background-color: lightblue;
 }
@@ -56,6 +60,27 @@ div.card {
   border: none;
 }
 
+h6.uvColor {
+  padding: 5px 15px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.green {
+  background-color: green;
+  color: green;
+}
+
+.yellow {
+  background-color: yellow;
+  color: yellow;
+}
+
+.red {
+  background-color: red;
+  color: red;
+}
+
 .historyBtn {
   display: inline-flex;
   align-content: center;
@@ -66,15 +91,17 @@ div.card {
 }
 
 .fiveDayForecast {
-    flex-wrap: nowrap;
+  flex-wrap: nowrap;
 }
 
 .tarjeta {
-  min-width: 15em;
+  min-width: auto;
   padding: 5px;
-  margin: 0.5em;
+  margin: 0.3em;
+  .card-text {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
 }
-
 
 footer {
   align-content: right;

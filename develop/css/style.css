@@ -23,6 +23,10 @@ h1 {
   padding: 1.5rem;
 }
 
+h2 {
+  text-align: center;
+}
+
 div.card {
   background-color: lightblue;
 }
@@ -37,6 +41,29 @@ div.card {
   height: 5em;
   width: 5em;
   border: none;
+}
+
+h6.uvColor {
+  padding: 5px 15px;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.green {
+  background-color: green;
+  color: green;
+}
+
+.yellow {
+  background-color: yellow;
+  color: yellow;
+}
+
+.red {
+  background-color: red;
+  color: red;
 }
 
 .historyBtn {
@@ -57,9 +84,13 @@ div.card {
 }
 
 .tarjeta {
-  min-width: 15em;
+  min-width: auto;
   padding: 5px;
-  margin: 0.5em;
+  margin: 0.3em;
+}
+
+.tarjeta .card-text {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 footer {

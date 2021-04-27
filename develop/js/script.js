@@ -15,7 +15,6 @@ var secondDiv = document.querySelector('.second-div')
 var uvColorBar = document.querySelector('.uvColorBar');
 var uvColor = document.querySelector('.uvColor');
 
-
 // 1. Search data based on user selection
 var displayWeather = function (e) {
     e.preventDefault();
@@ -82,8 +81,6 @@ function fetchWeather(userInput) {
             .then(res => res.json())
 
             .then(forecastData => {
-                console.log("Line-64--> 5 day forecast");
-                console.log(forecastData)
                 var filteredDays = forecastData.list.filter(query => query.dt_txt.includes('12:00:00'));
                 
                 // Call to populate 5-day Forecast
@@ -91,7 +88,7 @@ function fetchWeather(userInput) {
             })      
     }
 }
-    
+   
 // 3. Populate card with fetched data
 function populateCard(data,uvData) {
     // Add icon to the image section
@@ -118,14 +115,14 @@ function populateCard(data,uvData) {
 function populateFive(filteredDays, fiveDayFSec){
     // Add new card group in Five Day Forecast Section
     var newCardGroup = document.createElement('div');
-    newCardGroup.setAttribute("class", "card-group col-sm-6");
+    newCardGroup.setAttribute("class", "card-deck");
     secondDiv.appendChild(newCardGroup);
     for (var i = 0; i < filteredDays.length; i ++) {
         console.log(filteredDays[i].dt_txt);
 
         // Add new card in card group
         var newCard = document.createElement('div');
-        newCard.setAttribute("class","card w-50 tarjeta");
+        newCard.setAttribute("class","card tarjeta");
         newCardGroup.appendChild(newCard);
         // New Image in  new card   
         var newImg = document.createElement('img');
@@ -195,7 +192,6 @@ function printHistory(){
 
 // 7. History buttons for fetch   
 var displayCityHistory = function (e) {
-    console.log(3);
     // if button has a value
     if (e.target.dataset.value =='') {
         return null;

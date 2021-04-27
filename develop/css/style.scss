@@ -2,8 +2,9 @@
 
 * {
   box-sizing: border-box;
+
   $font-family-sans-serif:
-  // Safari for macOS and iOS (San Francisco)
+// Safari for macOS and iOS (San Francisco)
     -apple-system,
     // Chrome < 56 for macOS (San Francisco)
     BlinkMacSystemFont,
@@ -30,7 +31,6 @@ html {
 }
 
 main {
-  //flex-direction: row;
   align-content: center;
 }
 
@@ -60,30 +60,45 @@ div.card {
   border: none;
 }
 
+/*
+.uvColorBar {
+  border-radius: 20px;
+}
+*/
+
 h6.uvColor {
   padding: 5px 15px;
-  border-radius: 5px;
+  border-radius: 20px;
   width: fit-content;
+  text-align: center;
 }
 
 .green {
   background-color: green;
   color: green;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .yellow {
   background-color: yellow;
   color: yellow;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .red {
   background-color: red;
   color: red;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .historyBtn {
   display: inline-flex;
   align-content: center;
+  padding: 10px;
+  margin: 10px;
   width: 12em;
   height: 2.5em;
   font-size: 0.8em;
@@ -91,15 +106,17 @@ h6.uvColor {
 }
 
 .fiveDayForecast {
-  flex-wrap: nowrap;
+  display: inline-block;
 }
 
 .tarjeta {
+  flex-wrap: wap;
   min-width: auto;
-  padding: 5px;
+  padding: 3px;
   margin: 0.3em;
   .card-text {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Open Sans", Cambria, Cochin, Arial, Helvetica, sans-serif,
+      "Firamono", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
 }
 

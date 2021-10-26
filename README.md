@@ -47,4 +47,4 @@ _______________________________________________
 
 
 ## Link to website
-[Link to Website](https://adina-hc.github.io/06-weather-dashboard/)
+[Link to Website](https://adina-hc.github.io/weather-dashboard/)
